@@ -2,7 +2,8 @@ import maya.cmds as cmds
 import maya.mel as mel
 
 def autoPaintTargetShape():
-	assert len(cmds.ls(sl=True)) == 2, 'Please select exactly two objects!'
+# Thanks to kelsolaar for his help
+    assert len(cmds.ls(sl=True)) == 2, 'Please select exactly two objects!'
     blendshape_node = cmds.blendShape(weight=(0, 1))
     mel.eval('artSetToolAndSelectAttr "artAttrCtx" ("blendShape.{0}.weightMap")'.format(blendshape_node))
     mel.eval('artAttrCtx -e -value 0 `currentCtx`')
